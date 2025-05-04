@@ -90,44 +90,13 @@ class mydashboard:
           self.top=Toplevel()
           self.new_win=myteacher(self.top)
     
-
-
-      
-
-
-
-
-
-
-
-
-                              
                               
 
-                              
-
-                              
-
-                              
-
-                              
-
-                              
-
-                              
-
-                              
-
-
-
-
-
-
-
+                
 if __name__=="__main__":
    
     root=Tk()
     obj=mydashboard(root)
     root.mainloop()
-    login_win.mainloop()
+    # login.mainloop()
 
