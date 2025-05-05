@@ -1,7 +1,8 @@
 from tkinter import*
 from tkinter import messagebox
 from PIL import Image,ImageTk
-from tkinter import ttk
+from tkinter import ttk,messagebox
+import sqlite3
 class mycourse:
     def __init__(self,root):
         self.root=root
@@ -21,6 +22,8 @@ class mycourse:
         self.charges_txt=Entry(self.root, width=30).pack(pady=5) 
         self.sub_btn=Button(self.root, text="Submit", bg="#4CAF50", fg="white").pack(pady=10)  
         self.clr_btn=Button(self.root, text="Clear", bg="#f44336", fg="white").pack(pady=5) 
+        self.clr_btn=Button(self.root, text="Save", bg="#f44336", fg="white").pack(pady=5) 
+
 
 
         self.image=Image.open("images/course_profile.png")
@@ -29,7 +32,7 @@ class mycourse:
         self.img_lab=Label(self.root,image=self.convert_img)
         self.img_lab.place(x=30,y=28) 
 
-
+        self.btn_add=Button(self.root,text='Save',font=("goudy old style",15,"bold"),bg="#2196f3",fg="white",cursor="hand2",command=self.add)
         self.update_btn=Button(self.root,text="Update",bd=2,relief=SUNKEN,font=("Roboto",17),bg="#4CAF50",width=8,fg="white")
         self.update_btn.place(x=700,y=150)
 
@@ -65,6 +68,19 @@ class mycourse:
         self.search_btn.place(x=850,y=80,height=30,width=195)
        
         
+        # =======
+
+        def add(self):
+            con=sqlite3.connect(database="rms.db")
+            cur=con.cursor()
+            try:
+                if self.var_course.get()=="":
+                    messagebox.showerror("Error","Course Name should be required",parent=self.root)
+                else:
+                    pass
+            except Exception as ex:
+                messagebox.showerror("Error",f"Error due to {str(ex)}")
+
     
 
 
